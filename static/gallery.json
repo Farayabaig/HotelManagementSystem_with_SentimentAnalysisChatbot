@@ -1,0 +1,47 @@
+[
+  {
+      "filename": "ab1.png",
+      "alt": "Image One",
+      "caption": "Beautiful view of the hotel's exterior."
+  },
+  {
+      "filename": "ab2.png",
+      "alt": "Image Two",
+      "caption": "Luxurious hotel room interior."
+  },
+  {
+      "filename": "crew.jpeg",
+      "alt": "Person One",
+      "caption": "Our friendly staff waiting to welcome you."
+  },
+  {
+      "filename": "hotel1.jpg",
+      "alt": "Person Two",
+      "caption": "Our excuisite dining experience."
+  },
+  {
+      "filename": "hotel2jpg.jpg",
+      "alt": "Hotel Dining",
+      "caption": "Comfortable and Luxury Rooms."
+  },
+  {
+      "filename": "hotel3jpg.jpg",
+      "alt": "Hotel Pool",
+      "caption": "Relax by the serene hotel environment."
+  },
+  {
+      "filename": "showcase.jpg",
+      "alt": "Hotel Lobby",
+      "caption": "Our spacious rooms."
+  },
+  {
+      "filename": "test-bg.jpg",
+      "alt": "Background",
+      "caption": "Elegant background setting of our hotel spaces."
+  },
+  {
+    "filename": "pool.jpg",
+    "alt": "Background",
+    "caption": "Swimming Pool."
+}
+]
