@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="description" content="Dobro dosli u najbolji kafic na svetu">
+    <meta name="keywords" content="Kafic">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" integrity="sha384-gfdkjb5BdAXd+lj+gudLWI+BXq4IuLW5IT+brZEZsLFm++aCMlF1V92rMkPaX4PP" crossorigin="anonymous">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+    <title>Crown Plaza Hotel - Hello</title>
+    <style>
+
+
+body{
+    background-image: url('/static/img/preview/hotel.png'); 
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
+}
+
+
+        .page-content {
+            background-image: url('/static/img/preview/previewimage1.png'); /* Replace 'path_to_your_image.jpg' with the actual path to your image */
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+
+.chat-header {
+    background-color: #d87093;
+    color: #fff;
+    text-align: center;
+    padding: 10px;
+}
+.user-message {
+        background-color: #e9e9e9;
+        color: #333;
+        border-radius: 5px;
+        padding: 15px;
+        margin: 10px;
+        font-size: 16px;
+        text-align: right;
+    }
+
+    /* Bot Message Styles */
+    .bot-message {
+        background-color: #d87093;
+        color: #fff;
+        border-radius: 5px;
+        padding: 15px;
+        margin: 10px;
+        font-size: 16px;
+    }
+
+    .bot-message p {
+        margin: 5px 0;
+    }
+
+    /* Menu Options Styles */
+    .menu-options {
+        margin-top: 10px;
+        padding: 10px;
+        background-color: #f9f6f6;
+        border-radius: 5px;
+    }
+
+    .menu-option {
+        margin: 5px;
+        padding: 5px;
+        cursor: pointer;
+        background-color: #8c8b8b;
+        border-radius: 5px;
+        font-size: 14px;
+    }
+
+    .menu-option:hover {
+        background-color: #5a5858;
+    }
+
+   
+
+    /* Send button Styles */
+    .chat-input button {
+        background-color: #d87093; 
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        padding: 10px 20px;
+    }
+
+    .chat-input button:hover {
+        background-color: #c15075;
+    }
+    </style>
+</head>
+<body>
+    <header>
+        <nav id="navbar" style="background-color: white;">
+            <div class="container" style="background-color: white; left:40%;">
+                <h1 class="logo"><a href="index.html"><img src="\static\img\logo.png" alt="logo" style="width: 100px; margin-right:160px;"></a></h1>
+                <ul>
+                    <li><a class="current" href="/ " style="background-color: white; font-size:large; color: palevioletred; margin-top: 17px;" >Home</a></li>
+                    <li><a class="current" href="/about" style="background-color: white; font-size:large; color: palevioletred; margin-top: 17px;">About Us</a></li>
+                    <li><a class="current" href="/contact" style="background-color: white; font-size:large; color: palevioletred; margin-top: 17px;">Reservation</a></li>
+                    <li><a class="current" href="/chat" style="background-color: white; font-size:large; color: palevioletred; margin-top: 17px;">Chat with Us</a></li>
+                    <li><a class="current" href="/gallery" style="background-color: white; font-size:large; color: palevioletred; margin-top: 17px;">Gallery</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+    <div class="page-content"></div>
+    <div class="chat-container">
+        <div class="chat-header">
+            <h2>Crown Plaza Assistant</h2>
+        </div>
+        <div class="chat-content" id="chatContent">
+            <!-- Messages will be displayed here -->
+        </div>
+        <div class="chat-input">
+            <input type="text" id="userInput" placeholder="Type your message...">
+            <button onclick="sendMessage()">Send</button>
+        </div>
+    </div>
+    <div id="sentimentOutput">Test sentiment</div>
+</div>
+    <script>
+        let chatState = 0;
+
+        // Initial message from bot
+        const chatContent = document.getElementById('chatContent');
+        chatContent.innerHTML += `<div class="bot-message">
+            <h4>Welcome to Crown Plaza Hotel Assistant</h4>
+            <p>How can we make your stay extraordinary today?</p>
+            <p>Choose an option below:</p>
+            <div class="menu-options">
+                <div class="menu-option" onclick="handleMenuOption(1)">1. Explore Our Hotel</div>
+                <div class="menu-option" onclick="handleMenuOption(2)">2. Room Options</div>
+                <div class="menu-option" onclick="handleMenuOption(3)">3. Leave a Review</div>
+                <div class="menu-option" onclick="handleMenuOption(4)">4. Schedule a Call</div>
+            </div>
+        </div>`;
+
+        function handleMenuOption(option) {
+            switch (option) {
+                case 1:
+                    chatContent.innerHTML += `<div class="bot-message">Welcome to Crowne Plaza Singapore, where every stay is an invitation to elevate your experience. Nestled in the heart of this vibrant city, our hotel combines the best of business and leisure, offering modern comforts and sophisticated amenities. Whether you're here for a corporate meeting, a romantic getaway, or a family vacation, our warm hospitality and impeccable service ensure that your stay is nothing short of exceptional. Discover the perfect blend of convenience, luxury, and relaxation at Crowne Plaza Singapore, your gateway to a memorable stay in the Lion City.</div>`;
+                    resetChat();
+                    break;
+                case 2:
+                    const randomRooms = Math.floor(Math.random() * 10) + 1;
+                    chatContent.innerHTML += `<div class="bot-message">Currently, we have ${randomRooms} Standard rooms, ${randomRooms + 5} Deluxe rooms, ${randomRooms + 3} Suites and ${randomRooms - 1} Presidential rooms available.</div>`;
+                    resetChat();
+                    break;
+                case 3:
+                    chatContent.innerHTML += `<div class="bot-message">Please enter your review:</div>`;
+                    chatState = 3;
+                    break;
+                case 4:
+                    chatContent.innerHTML += `<div class="bot-message">Please enter your contact number:</div>`;
+                    chatState = 4;
+                    break;
+                default:
+                    chatContent.innerHTML += `<div class="bot-message">Invalid option. Please choose a valid option from the menu.</div>`;
+                    resetChat();
+                    break;
+            }
+        }
+
+        function sendMessage() {
+            const message = document.getElementById('userInput').value;
+            if (message.trim()) {
+                chatContent.innerHTML += `<div class="user-message">${message}</div>`;
+                document.getElementById('userInput').value = '';
+
+                switch (chatState) {
+                    case 0:
+                        handleMenuOption(message);
+                        break;
+                    case 3:
+                        handleReview(message);
+                        break;
+                    case 4:
+                        handlePhoneInput(message);
+                        break;
+                }
+            }
+        }
+
+        function handleReview(review) {
+            getSentiment(review, function (sentiment) {
+                document.getElementById('sentimentOutput').innerText = "Sentiment: " + sentiment;
+            });
+            chatContent.innerHTML += `<div class="bot-message">Thanks for your review, we are always trying to improve our service.</div>`;
+            resetChat();
+        }
+
+        function handlePhoneInput(phone) {
+            chatContent.innerHTML += `<div class="bot-message">Thanks, we will call you shortly at ${phone}.</div>`;
+            resetChat();
+        }
+
+        function resetChat() {
+            chatState = 0;
+        }
+
+        function getSentiment(message, callback) {
+            fetch("/get_sentiment", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                    "message": message
+                }),
+            })
+                .then(response => response.json())
+                .then(data => {
+                    callback(data.sentiment);
+                });
+        }
+    </script>
+</body>
+</html>

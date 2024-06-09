@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="description" content="Dobro dosli u najbolji kafic na svetu">
+    <meta name="keywords" content="Kafic">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" integrity="sha384-gfdkjb5BdAXd+lj+gudLWI+BXq4IuLW5IT+brZEZsLFm++aCMlF1V92rMkPaX4PP" crossorigin="anonymous">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+    <title>Crown Plaza Hotel - Hello</title>
+</head>
+<body>
+    <header>
+        <nav id="navbar" style="background-color: white;">
+            <div class="container" style="background-color: white; left:40%;">
+                <h1 class="logo"><a href="index.html"><img src="\static\img\logo.png" alt="logo" style="width: 100px; margin-right:160px;"></a></h1>
+                <ul>
+                    <li><a class="current" href="/ " style="background-color: white; font-size:large; color: palevioletred; margin-top: 17px;" >Home</a></li>
+                    <li><a class="current" href="/about" style="background-color: white; font-size:large; color: palevioletred; margin-top: 17px;">About Us</a></li>
+                    <li><a class="current" href="/contact" style="background-color: white; font-size:large; color: palevioletred; margin-top: 17px;">Reservation</a></li>
+                    <li><a class="current" href="/chat" style="background-color: white; font-size:large; color: palevioletred; margin-top: 17px;">Chat with Us</a></li>
+                    <li><a class="current" href="/gallery" style="background-color: white; font-size:large; color: palevioletred; margin-top: 17px;">Gallery</a></li>
+                </ul>
+            </div>
+        </nav>
+   <section id="about-info" class="bg-light py-3">
+       <div class="container">
+           <div class="info-left">
+               <h1 class="l-heading"> <span class="text-primary"  style="color: #d87093;" >About</span> our Hotel </h1>
+               <p>Step off your flight into the resort ambience of Crowne Plaza Changi Airport, located at Terminal 3 and seamlessly connected to all airport terminals and Jewel, a tropical wonderland where nature meets retail, next to the hotel. Simply take a sky train or link bridge from your terminal directly to our doorstep.
+               </p>
+               <p>The hotel has won the World's Best Airport Hotel in the 2023 Skytrax World Airport Awards for 8 consecutive years as well as numerous local and international awards.</p>
+           </div>
+           <div class="info-right">
+            <img src="{{ url_for('static', filename='img/photo-2.jpg') }}" alt="Hotel">
+
+           </div>
+       </div>
+   </section>
+   <div class="clr"></div>
+
+   <section id="testimonials" class="py-3">
+    <div class="container">
+       <h2 class="l-heading ">What our guest says</h2>
+       <div class="testimonial bg-primary" style="background-color: #d87093;">
+        <img src="{{ url_for('static', filename='img/person-1.jpg') }}" alt="Samanta">
+
+           <p>The room was large and could hold 3 people with no problem.
+            Bathroom was clean and large there was plenty of room for our cases as well
+            Beds were comfortable .</p>
+       </div>
+
+       <div class="testimonial bg-primary" style="background-color: #d87093;">
+        <img src="{{ url_for('static', filename='img/person-2.jpg') }}" alt="Jen">
+
+        <p>Great welcome and seamless arrival experience - staff pleasant and efficient - great room size and comfy with all amenities - quiet and all in order - bathroom top cleanliness thank you</p>
+    </div>
+   </div>
+  </section>
+
+  <section id="amenities" class="bg-light py-3">
+    <div class="container">
+        <h2 class="l-heading"><span class="text-primary" style="color: #d87093;">Amenities & Services</span></h2>
+        <div class="amenities-list">
+            <div class="amenity">
+                <button class="amenity-button">Club Lounge</button>
+            </div>
+            <div class="amenity">
+                <button class="amenity-button">Lobby Lounge</button>
+            </div>
+            <div class="amenity">
+                <button class="amenity-button">Azur all-day dining restaurant</button>
+            </div>
+            <div class="amenity">
+                <button class="amenity-button">70’s-inspired Bar ‘75</button>
+            </div>
+            <div class="amenity">
+                <button class="amenity-button">Resort-style outdoor pool</button>
+            </div>
+            <div class="amenity">
+                <button class="amenity-button">Fitness centre</button>
+            </div>
+            <div class="amenity">
+                <button class="amenity-button">24-hour in-room dining service</button>
+            </div>
+            <div class="amenity">
+                <button class="amenity-button">Laundry service</button>
+            </div>
+            <div class="amenity">
+                <button class="amenity-button">24-hour business centre services</button>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="events-meetings" class="py-3">
+    <div class="container">
+        <h2 class="l-heading"><span class="text-primary" style="color: #d87093;">Events and Meetings</span></h2>
+        <div class="meetings-content">
+            <h2>CROWNE PLAZA CHANGI AIRPORT</h2>
+            <p><strong>Meetings & Events</strong></p>
+            <p>Let a Crowne Plaza® Meetings Manager coordinate your event. Conduct business or group functions in our rainforest-themed pillarless ballroom and stylish meeting rooms. Enjoy complimentary Wi-Fi and flexible catering options.</p>
+            <p><strong>Ready to book?</strong></p>
+            <p><a href="mailto:1800meeting@ihg.com" class="btn btn-primary">REQUEST A QUOTE</a></p>
+            <p>Email us at <a href="mailto:1800meeting@ihg.com">1800meeting@ihg.com</a> | Call us at <a href="tel:1800MEETING">1-800-MEETING</a></p>
+        </div>
+        <div class="meeting-rooms">
+            <h3 class="section-heading">BY THE NUMBERS</h3>
+            <ul>
+                <li>
+                    <h4 class="highlight">6 Meeting Rooms</h4>
+                </li>
+                <li>
+                    <h4 class="highlight">360 Largest Room Capacity</h4>
+                </li>
+                <li>
+                    <h4 class="highlight">7674 sq ft Total Area Of Meeting Space</h4>
+                </li>
+            </ul>
+        </div>
+        
+
+        <div class="meeting-space">
+            <h3>Find The Perfect Space</h3>
+            <div class="meeting-room">
+                <div class="meeting-info">
+                    <h4>Garcinia</h4>
+                    <p>1st Floor</p>
+                    <p>48 Guests</p>
+                    <p>This 63sqm rainforest-themed function room can accommodate up to 20 guests, with safe distancing measures in place. Garcinia is fully-equipped with state-of-the-art audiovisual technology and perfect for meetings, trainings, and breakout sessions.</p>
+                </div>
+            </div>
+            <div class="meeting-room">
+                <div class="meeting-info">
+                    <h4>Hopea</h4>
+                    <p>1st Floor</p>
+                    <p>48 Guests</p>
+                    <p>Hopea, spanning 62 square meters, can accommodate boardroom meetings for 7 guests and up to 15 guests for banquets (with safe distancing). The rainforest-themed design coupled with natural daylight provides a relaxed atmosphere for your guests.</p>
+                </div>
+            </div>
+            <div class="meeting-room">
+                <div class="meeting-info">
+                    <h4>Meranti</h4>
+                    <p>1st Floor</p>
+                    <p>13 Guests</p>
+                    <p>Perfect for executive meetings or presentations, Meranti can hold up to 7 guests in a boardroom setting (with safe distancing). This cozy rainforest-themed room is equipped with state-of-the-art meeting facilities and is ideal for small group meetings.</p>
+                </div>
+            </div>
+            <div class="meeting-room">
+                <div class="meeting-info">
+                    <h4>Alstonia</h4>
+                    <p>2nd Floor</p>
+                    <p>100 Guests</p>
+                    <p>Ideal for seminars, meetings, or social events, Alstonia spans 111 sqm and is able to accommodate up to 25 guests in a theater setting (with safe distancing). The rainforest-themed function space boasts natural daylight that can energize and inspire.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<section id="gallery" class="py-3">
+    <div class="container">
+        <div class="gallery-heading">
+        <h2 class="l-heading"><span class="text-primary" style="color: #d87093;">Gallery</span></h2>
+    </div>
+        <div id="pictureCarousel" class="carousel slide" data-ride="carousel">
+            <!-- Indicators -->
+            <ol class="carousel-indicators">
+                <li data-target="#pictureCarousel" data-slide-to="0" class="active"></li>
+                <li data-target="#pictureCarousel" data-slide-to="1"></li>
+                <!-- Add more <li> elements for additional slides -->
+            </ol>
+            <!-- Slides -->
+            <div class="carousel-inner" style="margin-left: 15%;">
+                <div class="carousel-item active">
+                    <img src="{{ url_for('static', filename='/img/ab1.png') }}" class="d-block w-100" alt="Image 1">
+                </div>
+                <div class="carousel-item">
+                    <img src="{{ url_for('static', filename='img/ab2.png') }}" class="d-block w-100" alt="Image 2">
+                </div>
+                <div class="carousel-item">
+                    <img src="{{ url_for('static', filename='img/preview/ab3.jpeg') }}" class="d-block w-100" alt="Image 2">
+                </div>
+                <div class="carousel-item">
+                    <img src="{{ url_for('static', filename='img/preview/ab4.jpeg') }}" class="d-block w-100" alt="Image 2">
+                </div>
+                <div class="carousel-item">
+                    <img src="{{ url_for('static', filename='img/preview/ab5.jpeg') }}" class="d-block w-100" alt="Image 2">
+                </div>
+                <div class="carousel-item">
+                    <img src="{{ url_for('static', filename='img/preview/ab6.jpeg') }}" class="d-block w-100" alt="Image 2">
+                </div>
+                <div class="carousel-item">
+                    <img src="{{ url_for('static', filename='img/preview/ab7.jpeg') }}" class="d-block w-100" alt="Image 2">
+                </div>
+            </div>
+            <!-- Controls -->
+            <a class="carousel-control-prev" href="https://digital.ihg.com/is/image/ihg/crowne-plaza-singapore-2532134756-3x2" role="button" data-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+            </a>
+            <a class="carousel-control-next" href="https://digital.ihg.com/is/image/ihg/crowne-plaza-singapore-5089416143-3x2" role="button" data-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+            </a>
+        </div>
+    </div>
+</section>
+
+
+
+</body>
+</html>
+
+<style>
+        /* Global Styles */
+        .amenities-list {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        margin-top: 20px;
+    }
+
+    .amenity {
+        width: calc(33.33% - 10px);
+        margin-bottom: 20px;
+    }
+
+    .amenity-button {
+        background-color: #d87093;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        padding: 10px 20px;
+        font-size: 16px;
+        width: 100%;
+        transition: background-color 0.3s;
+    }
+
+    .amenity-button:hover {
+        background-color: #c15075;
+    }
+
+        .info-left,
+        .info-right {
+            width: 50%;
+            padding: 0 30px;
+        }
+
+        .info-left h1,
+        .info-right h1 {
+            color: #d87093;
+        }
+
+        .info-left p,
+        .info-right p {
+            font-size: 18px;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        .info-right img {
+            display: block;
+            margin: auto;
+            width: 70%;
+            border-radius: 50%;
+        }
+
+        /* Testimonials Styles */
+        #testimonials {
+            background: linear-gradient(rgba(216, 112, 147, 0.7), rgba(216, 112, 147, 0.7)), url('../img/test-bg.jpg') no-repeat center center/cover;
+            padding: 100px 0;
+            color: #fff;
+        }
+
+        #testimonials h2 {
+            font-size: 28px;
+            margin-bottom: 40px;
+        }
+
+        .testimonial {
+            padding: 20px;
+            margin-bottom: 40px;
+            border-radius: 5px;
+            opacity: 0.85;
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+
+        .testimonial img {
+            width: 100px;
+            float: left;
+            margin-right: 20px;
+            border-radius: 50%;
+        }
+
+        /* Amenities Section Styles */
+        #amenities {
+            background-color: #fff;
+            padding: 50px 0;
+        }
+
+        #amenities h2 {
+            color: #d87093;
+            margin-bottom: 30px;
+        }
+
+        #amenities p {
+            font-size: 18px;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        /* Gallery Styles */
+        #gallery {
+            background-color: #fff;
+            padding: 50px 0;
+        }
+        #gallery ol {
+        list-style: none; /* Remove the default list numbering */
+    }
+
+        #gallery h2 {
+            color: #d87093;
+            margin-bottom: 30px;
+        }
+
+        .carousel-inner {
+            max-height: 400px;
+        }
+
+        .carousel-item img {
+            max-height: 400px;
+            object-fit: cover;
+        }
+
+/* Meetings and Events Section Styles */
+#events-meetings {
+    background-color: #f0f0f0;
+    padding: 40px 0;
+}
+
+.meetings-content {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+}
+
+.meeting-rooms ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.meeting-rooms h4 {
+    margin: 0;
+}
+
+.meeting-space .meeting-room {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+}
+
+.meeting-space .meeting-info h4 {
+    margin: 0;
+}
+
+.btn-primary {
+    background-color: #d87093;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    padding: 10px 20px;
+}
+
+.btn-primary:hover {
+    background-color: #c15075;
+}
+
+/* Meetings and Events Section Styles */
+#events-meetings {
+    background-color: #f0f0f0;
+    padding: 40px 0;
+}
+
+.meeting-rooms {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.section-heading {
+    color: #d87093;
+    font-size: 24px;
+    margin: 0 0 20px;
+}
+
+.highlight {
+    color: #d87093;
+    font-size: 18px;
+    margin: 0 0 10px;
+}
+
+.section-subtext {
+    font-size: 14px;
+    color: #999;
+    margin-top: 20px;
+}
+
+    </style>
+
+</style>

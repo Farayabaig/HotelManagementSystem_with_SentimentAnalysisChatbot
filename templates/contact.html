@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="description" content="Dobro dosli u najbolji kafic na svetu">
+    <meta name="keywords" content="Kafic">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" integrity="sha384-gfdkjb5BdAXd+lj+gudLWI+BXq4IuLW5IT+brZEZsLFm++aCMlF1V92rMkPaX4PP" crossorigin="anonymous">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+    <title>Crown Plaza Hotel - Hello</title>
+</head>
+<body>
+    <header>
+        <nav id="navbar" style="background-color: white;">
+            <div class="container" style="background-color: white; left:40%;">
+                <h1 class="logo"><a href="index.html"><img src="\static\img\logo.png" alt="logo" style="width: 100px; margin-right:160px;"></a></h1>
+                <ul>
+                    <li><a class="current" href="/ " style="background-color: white; font-size:large; color: palevioletred; margin-top: 17px;" >Home</a></li>
+                    <li><a class="current" href="/about" style="background-color: white; font-size:large; color: palevioletred; margin-top: 17px;">About Us</a></li>
+                    <li><a class="current" href="/contact" style="background-color: white; font-size:large; color: palevioletred; margin-top: 17px;">Reservation</a></li>
+                    <li><a class="current" href="/chat" style="background-color: white; font-size:large; color: palevioletred; margin-top: 17px;">Chat with Us</a></li>
+                    <li><a class="current" href="/gallery" style="background-color: white; font-size:large; color: palevioletred; margin-top: 17px;">Gallery</a></li>
+                </ul>
+            </div>
+        </nav>
+    <section id="reservation-form" class="py-3">
+        <div class="container">
+            <h1 class="l-heading"><span class="text-primary" style="color: #d87093;">Room</span> Reservation</h1>
+            <p>Please fill in the details for room reservation.</p>
+            <form onsubmit="event.preventDefault(); reserveRoom();">
+
+                <div class="form-group">
+                    <label for="name">Name</label>
+                    <input type="text" name="name" id="name" placeholder="Name" required>
+                </div>
+                <div class="form-group">
+                    <label for="nationalID">National ID</label>
+                    <input type="text" name="nationalID" id="nationalID" placeholder="National ID" required>
+                </div>
+                <div class="form-group"> 
+                    <select name="roomType" id="roomType" onchange="updateBill()">
+                        <option value="100">Standard - $100/day Club Member</option>
+                        <option value="200">Deluxe - $200/day Silver Member</option>
+                        <option value="300">Suite - $300/day Gold Member</option>
+                        <option value="400">S Presidential- $400/day Plantinum</option>
+                    </select>
+                    
+
+                    
+                </div>
+                <div class="form-group">
+                    <label for="dateFrom">Reservation Date From</label>
+                    <input type="date" name="dateFrom" id="dateFrom" placeholder="Reservation Date From" required>
+                </div>
+                <div class="form-group">
+                    <label for="dateTo">Reservation Date To</label>
+                    <input type="date" name="dateTo" id="dateTo" placeholder="Reservation Date To" required>
+                </div>
+                <div class="form-group">
+                    <label>Total Bill:</label>
+                    <span id="totalBill">0</span>
+                </div>
+                <button type="submit" class="btn" style="background-color: #d87093; color: #333; padding: 10px 20px; border: none; border-radius: 5px; cursor: pointer;">Reserve</button>
+
+            </form>
+        </div>
+    </section>
+
+    <section id="contact-info" class="bg-dark">
+        <div class="container">
+            <div class="box">
+                <i class="fas fa-hotel fa-3x"></i>
+                <h3> Location</h3>
+                <p>75 Airport Blvd., #01-01, Singapore 819664</p>
+            </div>
+            <div class="box">
+                <i class="fas fa-phone fa-3x"></i>
+                <h3>Telephone Number</h3>
+                <p>00800 90 033 049</p>
+            </div>
+            <div class="box">
+                <i class="fas fa-envelope fa-3x"></i>
+                <h3>Email Address</h3>
+                <p>crowneplazainfo@gmail.com</p>
+            </div>
+        </div>
+    </section>
+    <div id="customAlert" class="modal">
+        <div class="modal-content">
+            <span class="close-btn">&times;</span>
+            <p id="alertMessage"></p>
+        </div>
+    </div>
+</body>
+</html>
+<script>
+    function updateBill() {
+        const roomRate = parseInt(document.getElementById('roomType').value);
+        const dateFrom = new Date(document.getElementById('dateFrom').value);
+        const dateTo = new Date(document.getElementById('dateTo').value);
+        const dayDifference = Math.ceil((dateTo - dateFrom) / (1000 * 60 * 60 * 24));
+        
+        // If the date difference is valid (positive), calculate and display the bill
+        if(dayDifference > 0) {
+            const totalBill = dayDifference * roomRate;
+            document.getElementById('totalBill').innerText = "$" + totalBill;
+        } else {
+            document.getElementById('totalBill').innerText = "$0";
+        }
+    }
+
+    // Attach event listeners to the date fields to update the bill when dates are changed
+    document.getElementById('dateFrom').addEventListener('change', updateBill);
+    document.getElementById('dateTo').addEventListener('change', updateBill);
+
+    function downloadCSV(data) {
+        const blob = new Blob([data], { type: 'text/csv' });
+        const url = window.URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.style.display = 'none';
+        a.href = url;
+        a.download = 'reservation.csv';
+        document.body.appendChild(a);
+        a.click();
+        window.URL.revokeObjectURL(url);
+    }
+
+    function reserveRoom() {
+    const name = document.getElementById('name').value;
+    const nationalID = document.getElementById('nationalID').value;
+    const roomType = document.getElementById('roomType').options[document.getElementById('roomType').selectedIndex].text;
+    const dateFrom = document.getElementById('dateFrom').value;
+    const dateTo = document.getElementById('dateTo').value;
+    const totalBill = document.getElementById('totalBill').innerText;
+
+    // Generate random room number between 100 and 600 for simplicity
+    const roomNumber = Math.floor(Math.random() * 501) + 100;
+
+    const csvContent = 'Name,National ID,Room Type,Date From,Date To,Total Bill,Room Number\n' +
+                       `${name},${nationalID},${roomType},${dateFrom},${dateTo},${totalBill},${roomNumber}`;
+
+    downloadCSV(csvContent);
+
+    const roomTypeValue = document.getElementById('roomType').value;
+    const loyaltyTier = getLoyaltyTier(roomTypeValue);
+
+    // Check if the user is qualified for discounts or benefits
+    const isQualified = (roomTypeValue >= 200) ? "Qualified" : "Not Qualified"; // logic
+
+    if (isRecurringCustomer(nationalID)) {
+        customAlert(`Welcome back! Thanks for making another reservation. You have been assigned room number #${roomNumber}. You can check in on the date by using our app. Loyalty Tier: ${loyaltyTier}. Status: ${isQualified}`);
+    } else {
+        addNewCustomer(nationalID);
+        customAlert(`Thanks for making your reservation. You have been assigned room number #${roomNumber}. You can check in on the date by using our app. Loyalty Tier: ${loyaltyTier}. Status: ${isQualified}`);
+    }
+}
+    function customAlert(message) {
+    const modal = document.getElementById('customAlert');
+    const closeBtn = document.querySelector('.close-btn');
+    const alertMsg = document.getElementById('alertMessage');
+
+    alertMsg.textContent = message;
+    modal.style.display = "block";
+
+    closeBtn.onclick = function() {
+        modal.style.display = "none";
+    }
+
+    window.onclick = function(event) {
+        if (event.target === modal) {
+            modal.style.display = "none";
+        }
+    }
+}
+    function getLoyaltyTier(roomTypeValue) {
+            switch (roomTypeValue) {
+                case '100':
+                    return 'Club Member';
+                case '200':
+                    return 'Silver';
+                case '300':
+                    return 'Gold';
+                case '400':
+                    return 'Platinum';
+                // ... (add more room types if needed) ...
+                default:
+                    return 'Standard';
+            }
+        }
+
+        function isRecurringCustomer(nationalID) {
+    const customers = JSON.parse(localStorage.getItem('customers') || '[]');
+    return customers.includes(nationalID);
+}
+function addNewCustomer(nationalID) {
+    const customers = JSON.parse(localStorage.getItem('customers') || '[]');
+    customers.push(nationalID);
+    localStorage.setItem('customers', JSON.stringify(customers));
+}
+</script>
+
+<style>
+    /* Custom Alert Modal Styles */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.6); /* Darken the background */
+}
+
+.modal-content {
+    background-color: #fff;
+    margin: 15% auto;
+    padding: 20px;
+    border-radius: 10px;
+    width: 50%;
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.2);
+    position: relative;
+    border: 2px solid #d87093; /* Add a border with the desired color */
+}
+
+
+.close-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    color: #333;
+    font-size: 24px;
+    cursor: pointer;
+}
+
+.close-btn:hover {
+    color: #d87093; /* Change color on hover */
+}
+
+#alertMessage {
+    font-size: 18px;
+    color: #333;
+    text-align: center;
+    border-color: #d87093;
+}
+
+/* Add transitions for better UX */
+.close-btn, #alertMessage {
+    transition: all 0.3s ease;
+}
+
+</style>

@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="description" content="Dobro dosli u najbolji kafic na svetu">
+    <meta name="keywords" content="Kafic">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" integrity="sha384-gfdkjb5BdAXd+lj+gudLWI+BXq4IuLW5IT+brZEZsLFm++aCMlF1V92rMkPaX4PP" crossorigin="anonymous">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+    <title>Crown Plaza Hotel - Hello</title>
+</head>
+<body>
+    <header>
+        <nav id="navbar" style="background-color: white;">
+            <div class="container" style="background-color: white; left:40%;">
+                <h1 class="logo"><a href="index.html"><img src="\static\img\logo.png" alt="logo" style="width: 100px; margin-right:160px;"></a></h1>
+                <ul>
+                    <li><a class="current" href="/ " style="background-color: white; font-size:large; color: palevioletred; margin-top: 17px;" >Home</a></li>
+                    <li><a class="current" href="/about" style="background-color: white; font-size:large; color: palevioletred; margin-top: 17px;">About Us</a></li>
+                    <li><a class="current" href="/contact" style="background-color: white; font-size:large; color: palevioletred; margin-top: 17px;">Reservation</a></li>
+                    <li><a class="current" href="/chat" style="background-color: white; font-size:large; color: palevioletred; margin-top: 17px;">Chat with Us</a></li>
+                    <li><a class="current" href="/gallery" style="background-color: white; font-size:large; color: palevioletred; margin-top: 17px;">Gallery</a></li>
+                </ul>
+            </div>
+        </nav>
+        <div id="showcase" style="    background: url('/static/img/preview/hotel2.jpeg') no-repeat center/cover;">
+            <div class="container">
+                <div class="showcase-content">
+                    <h1><span class="text-primary" style="color: #d87093;">Enjoy</span> your stay</h1>
+                    <p class="lead" style="color: rgb(249, 249, 249); font-size: x-large;">Stay at the World's Best Airport Hotel in Singapore Changi Airport and discover Jewel.</p>
+                    <a class="btn" href="/about" style="padding: 10px; border: 2px solid #d87093; border-radius: 5px; margin: 5px;">About our hotel</a>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- Check-in, Check-out and Room Info -->
+<!-- Check-in, Check-out and Room Info -->
+<div class="container py-2">
+    <div id="checkinForm" style="text-align: center;">
+        <input type="text" id="guestName" placeholder="Guest Name" style="padding: 10px; border: 2px solid #d87093; border-radius: 5px; margin: 5px;">
+        <br>
+        <input type="number" id="roomNo" placeholder="Room No" style="padding: 10px; border: 2px solid #d87093; border-radius: 5px; margin: 5px;">
+        <br>
+        <button class="btn" onclick="checkIn()" style="background-color: #d87093; color: #333; padding: 10px 20px; border: none; border-radius: 5px; cursor: pointer;">Check In</button>
+    </div>
+    <div id="info" style="text-align: center;">
+        <p id="welcomeMsg"></p>
+        <button class="btn" onclick="checkOut()" style="background-color: #d87093; color: #333; padding: 10px 20px; border: none; border-radius: 5px; cursor: pointer;">Check Out</button>
+    </div>
+</div>
+
+    <!-- Loyalty Points -->
+<!-- Loyalty Points -->
+<div class="container py-2" style="text-align: center;">
+    <div id="checkinForm">
+        <h2 style="color: #333;">Loyalty Points: <span id="points" style="color: #d87093;">0</span></h2>
+        <select id="servicesDropdown" style="padding: 10px; border: 2px solid #d87093; border-radius: 5px; margin: 10px;">
+            <option value="food,10">Buy Food - 10 points</option>
+            <option value="spa,20">Use Spa - 20 points</option>
+            <option value="gym,15">Use Gym - 15 points</option>
+            <option value="pool,25">Use Pool - 25 points</option>
+            <option value="laundry,5">Use Laundry - 5 points</option>
+        </select>
+        <button class="btn" onclick="applyService()" style="background-color: #d87093; color: #333; padding: 10px 20px; border: none; border-radius: 5px; cursor: pointer;">Apply Service</button>
+    </div>
+</div>
+
+    <footer id="main-footer">
+        <!-- Footer content -->
+    </footer>
+    <script>
+        let points = 0;
+
+        function checkIn() {
+            const guestName = document.getElementById('guestName').value;
+            const roomNo = document.getElementById('roomNo').value;
+            document.getElementById('welcomeMsg').innerText = `Welcome ${guestName}, your room number is ${roomNo}.`;
+            document.getElementById('checkinForm').style.display = 'none';
+            document.getElementById('info').style.display = 'block';
+            
+
+            points += Math.floor(Math.random() * 51) + 50;
+            document.getElementById('points').innerText = points;
+        }
+
+        function checkOut() {
+    customAlert("Thanks for choosing us for your stay. We hope to see you again soon.");
+    document.getElementById('checkinForm').style.display = 'block';
+    document.getElementById('info').style.display = 'none';
+    document.getElementById('guestName').value = '';
+    document.getElementById('roomNo').value = '';
+}
+
+    function customAlert(message) {
+    document.getElementById('customAlertText').textContent = message;
+    document.getElementById('customAlertModal').style.display = "block";
+}
+
+function closeCustomAlert() {
+    document.getElementById('customAlertModal').style.display = "none";
+}
+        function addPoints(type, pointValue) {
+            points += pointValue;
+            document.getElementById('points').innerText = points;
+        }
+        function applyService() {
+    const serviceDetails = document.getElementById('servicesDropdown').value.split(',');
+    const serviceName = serviceDetails[0];
+    const servicePoints = parseInt(serviceDetails[1]);
+    addPoints(serviceName, servicePoints);
+}
+    </script>
+    <div id="customAlertModal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeCustomAlert()">&times;</span>
+            <p id="customAlertText"></p>
+        </div>
+    </div>
+</body>
+</html>
